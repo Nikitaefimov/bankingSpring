@@ -12,14 +12,17 @@ import java.util.List;
 public class ClientController {
     private static ClientService clientService;
 
+    private static ClientRepository clientRepository;
+
+
     @Autowired
-    public ClientController(ClientService clientService) {
-        this.clientService = clientService;
+    public ClientController(ClientRepository clientRepository) {
+        this.clientRepository = clientRepository;
     }
 
     @GetMapping
     public List<Client> getClients() {
-        return clientService.getClients();
+        return clientRepository.findAll();
     }
 
 }
